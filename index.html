@@ -3,74 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zephyr AI Documentation</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Zephyr AI - Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f4f4f4;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .main-content {
+            margin-top: 100px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .command-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--secondary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .command-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .command-name {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .command-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .command-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .badge {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .badge.owner {
+            background: var(--accent-color);
+        }
+
+        .badge.admin {
+            background: #f39c12;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-content {
+                padding: 2rem;
+                margin-top: 120px;
+            }
+            
+            .commands-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">Zephyr AI</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="pages/getting-started.html">Getting Started</a></li>
-                <li><a href="pages/commands.html">Commands</a></li>
-                <li><a href="pages/api.html">API</a></li>
-                <li><a href="pages/faq.html">FAQ</a></li>
-            </ul>
+            <div class="logo">Zephyr <span>AI</span></div>
+            <div>Created by Tima (by ##TORU##)</div>
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1>Zephyr AI Documentation</h1>
-            <p>Complete guide to using and developing with Zephyr AI</p>
-            <div class="cta-buttons">
-                <a href="pages/getting-started.html" class="btn primary">Get Started</a>
-                <a href="pages/api.html" class="btn secondary">API Reference</a>
-            </div>
-        </section>
+    <div class="container">
+        <div class="main-content">
+            <section class="hero">
+                <h1>Zephyr AI Commands</h1>
+                <p>Complete list of all available Discord commands for Zephyr AI</p>
+            </section>
 
-        <section class="features">
-            <div class="feature-card">
-                <h3>🚀 Getting Started</h3>
-                <p>Learn how to setup and use Zephyr AI for your projects</p>
-                <a href="pages/getting-started.html">Read More</a>
-            </div>
-            <div class="feature-card">
-                <h3>⚙️ Commands</h3>
-                <p>Complete list of available commands and usage examples</p>
-                <a href="pages/commands.html">Read More</a>
-            </div>
-            <div class="feature-card">
-                <h3>🔧 API Reference</h3>
-                <p>Technical documentation for developers and integrators</p>
-                <a href="pages/api.html">Read More</a>
-            </div>
-            <div class="feature-card">
-                <h3>❓ FAQ</h3>
-                <p>Common questions and troubleshooting guide</p>
-                <a href="pages/faq.html">Read More</a>
-            </div>
-        </section>
+            <div class="commands-grid">
+                <!-- Chat Commands -->
+                <div class="command-card">
+                    <div class="command-name">/chat [message]</div>
+                    <div class="command-desc">Chat with Zephyr AI</div>
+                    <div class="command-meta">
+                        <span>💬 Chat Command</span>
+                    </div>
+                </div>
 
-        <section class="quick-start">
-            <h2>Quick Integration</h2>
-            <div class="code-block">
-                <pre><code>// Initialize Zephyr AI
-const zephyr = new ZephyrAI({
-    apiKey: 'your-api-key',
-    mode: 'unrestricted'
-});
+                <div class="command-card">
+                    <div class="command-name">/clear-history</div>
+                    <div class="command-desc">Clear your chat history</div>
+                    <div class="command-meta">
+                        <span>🗑️ History Management</span>
+                    </div>
+                </div>
 
-// Start using unlimited capabilities
-zephyr.processRequest('any request here');</code></pre>
+                <div class="command-card">
+                    <div class="command-name">/history</div>
+                    <div class="command-desc">Show your recent chat history</div>
+                    <div class="command-meta">
+                        <span>📜 History Management</span>
+                    </div>
+                </div>
+
+                <!-- Auto-Response Commands -->
+                <div class="command-card">
+                    <div class="command-name">/setup</div>
+                    <div class="command-desc">Setup auto-response in current channel</div>
+                    <div class="command-meta">
+                        <span>⚡ Auto-Response</span>
+                        <span class="badge admin">Admin Only</span>
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-name">/disable-ar</div>
+                    <div class="command-desc">Disable auto-response in this server</div>
+                    <div class="command-meta">
+                        <span>⚡ Auto-Response</span>
+                        <span class="badge admin">Admin Only</span>
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-name">/ar-status</div>
+                    <div class="command-desc">Check auto-response status</div>
+                    <div class="command-meta">
+                        <span>⚡ Auto-Response</span>
+                    </div>
+                </div>
+
+                <!-- System Commands -->
+                <div class="command-card">
+                    <div class="command-name">/generate-key</div>
+                    <div class="command-desc">Generate API key</div>
+                    <div class="command-meta">
+                        <span>🔑 System</span>
+                        <span class="badge owner">Owner Only</span>
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-name">/queue</div>
+                    <div class="command-desc">Check your message queue status</div>
+                    <div class="command-meta">
+                        <span>📊 System</span>
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-name">/stats</div>
+                    <div class="command-desc">Bot statistics</div>
+                    <div class="command-meta">
+                        <span>📊 System</span>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Unlimited Access</h3>
+                    <p>No restrictions on requests or content types</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Advanced Features</h3>
+                    <p>Web crawling, code generation, and more</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Processing</h3>
+                    <p>Instant responses with high accuracy</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure</h3>
+                    <p>Protected API keys and user data</p>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2025 Zephyr AI. Created by Tima (by ##TORU##)</p>
+        <p>All rights reserved. Unlimited AI capabilities.</p>
     </footer>
-    <script src="js/script.js"></script>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to command cards on load
+            const cards = document.querySelectorAll('.command-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.style.animation = 'fadeInUp 0.6s ease-out forwards';
+            });
+
+            // Add CSS animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .command-card {
+                    opacity: 0;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>
